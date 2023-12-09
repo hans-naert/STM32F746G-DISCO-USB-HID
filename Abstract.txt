@@ -1,0 +1,41 @@
+This is an HID example that demonstrates Human Interface Device (HID)
+on USB Device.
+
+Detailed description is available on:
+www.keil.com/pack/doc/MW/USB/html/dev_hid_tutorial.html
+
+Board:                  ST 'STM32F746G-Discovery'
+Microcontroller:        ST 'STM32F746NGH6'
+Clock Settings:         XTAL       =  25 MHz
+                        CPUCLK     = 216 MHz
+                        USB FS CLK =  48 MHz
+                        USB HS CLK =  60 MHz (from external ULPI PHY)
+USB Full-speed:         USB_FS (connector CN13)
+USB High-speed:         USB_HS (connector CN12)
+User Interface:         input:  User button
+                        output: LD1  LED
+
+The example demonstrates a Human Interface Device. The board LED and
+push button can be accessed from the PC through a custom
+HID Client Program (<Keil-root>\ARM\Utilities\HID_Client\Release\HIDClient.exe).
+
+The program is available in different targets:
+
+ - Debug:
+   - Compiler:                  ARM Compiler optimization Level 1
+   - Compiler:Event Recorder:   Enabled
+   - CMSIS:RTOS2:Keil RTX5:     Source
+   - USB:CORE:                  Debug
+
+ - Release:
+   - Compiler:                  ARM Compiler optimization Level 3
+   - Compiler:Event Recorder:   Disabled
+   - CMSIS:RTOS2:Keil RTX5:     Library
+   - USB:CORE:                  Release
+
+JUMPER SETTINGS:
+  - JP1 in position "5V link"
+
+Note:
+  - Define C Preprocessor symbol USBD_FS_VBUS_DETECT=0 as this board does not
+    support VBUS detect on USB_FS port (PA9 not connected)
