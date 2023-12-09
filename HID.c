@@ -29,7 +29,8 @@ extern GLCD_FONT GLCD_Font_16x24;
  *        Application
  *----------------------------------------------------------------------------*/
 __NO_RETURN void app_main (void *arg) {
-  uint8_t but, but_last;
+  uint8_t but, but_last, cnt;
+	cnt=0;
 
   (void)arg;
 
@@ -57,12 +58,17 @@ __NO_RETURN void app_main (void *arg) {
 
   but = but_last = 0U;
   for (;;) {                            /* Loop forever                       */
+		uint8_t data[64];
+		for(int i=0;i<63;i++)
+		  data[i]=i+cnt;
     but = (uint8_t)(Buttons_GetState ());
     if ((but ^ but_last) & 0x1FU) {
+			cnt++;
       but_last = but & 0x1FU;
-      if (USBD_Configured (0)) { USBD_HID_GetReportTrigger(0U, 0U, &but, 1U); }
-      if (USBD_Configured (1)) { USBD_HID_GetReportTrigger(1U, 0U, &but, 1U); }
+      if (USBD_Configured (0)) { USBD_HID_GetReportTrigger(0U, 0U, data, 64); }
+      if (USBD_Configured (1)) { USBD_HID_GetReportTrigger(1U, 0U, data, 64); }
     }
     osDelay(100U);                      /* 100 ms delay for sampling buttons  */
   }
 }
+

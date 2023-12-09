@@ -33,7 +33,7 @@
 //           <o.0..6>Maximum Endpoint Packet Size (in bytes) <0-64>
 //           <i>Specifies the physical packet size used for information exchange.
 //           <i>Maximum value is 64.
-#define USBD_HID0_EP_INT_IN_WMAXPACKETSIZE        4
+#define USBD_HID0_EP_INT_IN_WMAXPACKETSIZE        64
 
 //           <o.0..7>Endpoint polling Interval (in ms) <1-255>
 //           <i>Specifies the frequency of requests initiated by USB Host for
@@ -51,7 +51,7 @@
 //           <o.11..12>Additional transactions per microframe
 //           <i>Additional transactions improve communication performance.
 //             <0=>None <1=>1 additional <2=>2 additional
-#define USBD_HID0_EP_INT_IN_HS_WMAXPACKETSIZE     4
+#define USBD_HID0_EP_INT_IN_HS_WMAXPACKETSIZE     64
 
 //           <o.0..4>Endpoint polling Interval (in 125 us intervals)
 //           <i>Specifies the frequency of requests initiated by USB Host for
@@ -136,12 +136,12 @@
 //     <o.0..15>Maximum Input Report Size (in bytes) <1-65535>
 //     <i>Allocates memory and configures 'len' value for USBD_HID0_GetReport
 //     <i>and USBD_HID_GetReportTrigger
-#define USBD_HID0_IN_REPORT_MAX_SZ                1
+#define USBD_HID0_IN_REPORT_MAX_SZ                64
 
 //     <o.0..15>Maximum Output Report Size (in bytes) <1-65535>
 //     <i>Allocates memory and configures 'len' value for USBD_HID0_SetReport
 //     <i>when rtype=HID_REPORT_OUTPUT.
-#define USBD_HID0_OUT_REPORT_MAX_SZ               1
+#define USBD_HID0_OUT_REPORT_MAX_SZ               64
 
 //     <o.0..15>Maximum Feature Report Size (in bytes) <1-65535>
 //     <i>Allocates memory and configures 'len' value for USBD_HID0_SetReport
